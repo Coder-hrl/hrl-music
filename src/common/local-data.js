@@ -9,7 +9,7 @@ export const headerLinks = [
   },
   {
     title: '朋友',
-    link: '/friend',
+    link: '/friends',
   },
   {
     title: '商城',
@@ -83,7 +83,7 @@ export const dicoverMenu = [
   },
   {
     title: '歌手',
-    link: '/discover/artist',
+    link: '/discover/artists',
   },
   {
     title: '新碟上架',
