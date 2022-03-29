@@ -1,21 +1,20 @@
-import React, { memo, useEffect } from 'react'
-import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import React, { memo } from 'react'
 
-import { getBannersAction } from './store/actionCreator'
+import TopBanner from './c-cpns/top-banner/index'
+import HotRecommend from './c-cpns/hot-recommend'
+
+import {
+  RecommendWrapper,
+  Content,
+  RecommendLeft,
+  RecommendRight,
+} from './style'
+import Ranking from './c-cpns/ranking'
+import NewAblum from './c-cpns/new-ablum'
 const Recommend = memo(() => {
   // dispatch 操作
   // 这里面拿到数据 通过useSelector
-  const { topBanners } = useSelector(
-    (state) => ({
-      topBanners: state.recommend.topBanners,
-    }),
-    shallowEqual
-  )
-  const dispatch = useDispatch()
-  // 发送网络请求
-  useEffect(() => {
-    dispatch(getBannersAction())
-  }, [dispatch])
+
   //   const { getBanners } = props
 
   //   useEffect(() => {
@@ -24,9 +23,17 @@ const Recommend = memo(() => {
   //   return <div>Recommend</div>
   // })
   return (
-    <div>
-      <h2>数组长度:{topBanners.length}</h2>
-    </div>
+    <RecommendWrapper>
+      <TopBanner />
+      <Content className="wrap-v2">
+        <RecommendLeft>
+          <HotRecommend />
+          <Ranking />
+          <NewAblum />
+        </RecommendLeft>
+        <RecommendRight></RecommendRight>
+      </Content>
+    </RecommendWrapper>
   )
 
   // const mapStateToProps = (state) => ({
