@@ -5,6 +5,7 @@ import ThemeHeaderRcm from '@/components/theme-header-rcm'
 
 import { HotRecommendWrapper } from './style'
 import { getHotRecommendsAction } from '../../store/actionCreator'
+import SongCover from '../../../../../../components/song-cover'
 const HotRecommend = memo(() => {
   // redux hooks
   const dispatch = useDispatch()
@@ -18,6 +19,8 @@ const HotRecommend = memo(() => {
   useEffect(() => {
     dispatch(getHotRecommendsAction(8))
   }, [dispatch])
+
+  // 视图层
   return (
     <HotRecommendWrapper>
       <ThemeHeaderRcm
@@ -26,7 +29,7 @@ const HotRecommend = memo(() => {
       />
       <div className="recommend-list">
         {hotRecommends.map((item, index) => {
-          return <div key={item.id}>{item.name}</div>
+          return <SongCover key={item.id} info={item} />
         })}
       </div>
     </HotRecommendWrapper>

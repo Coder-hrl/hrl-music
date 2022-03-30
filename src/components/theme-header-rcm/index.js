@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 import { HeaderWrapper } from './style'
 const ThemeHeaderRcm = memo((props) => {
@@ -27,10 +27,10 @@ const ThemeHeaderRcm = memo((props) => {
   )
 })
 
-ThemeHeaderRcm.PropTypes = {
-  title: PropTypes.string.isRequired,
-  keywords: PropTypes.array,
-}
+// ThemeHeaderRcm.PropTypes = {
+//   title: PropTypes.string.isRequired,
+//   keywords: PropTypes.array,
+// }
 ThemeHeaderRcm.defaultProps = {
   keywords: [],
 }

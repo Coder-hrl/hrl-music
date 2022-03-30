@@ -1,5 +1,10 @@
 import * as types from './contains'
-import { getTopBanners, getHotRecommends } from '@/service/api/recommend'
+import {
+  getTopBanners,
+  getHotRecommends,
+  getNewAlbum,
+  getTopList,
+} from '@/service/api/recommend'
 // 可能需要传入其他额外的参数
 
 export const changeTopBannersAction = (res) => ({
@@ -24,6 +29,35 @@ export const getHotRecommendsAction = (limit) => {
   return (dispatch) => {
     getHotRecommends(limit).then((res) => {
       dispatch(changeHotRecommendsAction(res))
+    })
+  }
+}
+
+// 获取ablum里面的内容
+export const changeNewAlbum = (res) => ({
+  type: types.CHANGE_NEW_ALBUM,
+  newAblums: res.albums,
+})
+
+export const getNewAlbumAction = (limit) => {
+  return (dispatch) => {
+    getNewAlbum(limit).then((res) => {
+      // console.log(res)
+      dispatch(changeNewAlbum(res))
+    })
+  }
+}
+
+export const changeTopList = (res) => ({
+  type: types.CHANGE_TOP_LIST,
+  topList: res.playlist,
+})
+
+export const getTopListAction = (idx) => {
+  return (dispatch) => {
+    getTopList(idx).then((res) => {
+      // console.log(res)
+      dispatch(changeTopList(res))
     })
   }
 }

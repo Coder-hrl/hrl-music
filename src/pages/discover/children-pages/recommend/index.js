@@ -28,8 +28,8 @@ const Recommend = memo(() => {
       <Content className="wrap-v2">
         <RecommendLeft>
           <HotRecommend />
-          <Ranking />
           <NewAblum />
+          <Ranking />
         </RecommendLeft>
         <RecommendRight></RecommendRight>
       </Content>
