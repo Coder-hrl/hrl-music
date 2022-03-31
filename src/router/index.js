@@ -1,3 +1,5 @@
+import { Navigate } from 'react-router-dom'
+
 import HyDiscover from '../pages/discover'
 import HyRecommend from '../pages/discover/children-pages/recommend'
 import HySongs from '../pages/discover/children-pages/songs'
@@ -10,58 +12,56 @@ import HyRanking from '../pages/discover/children-pages/ranking'
 import HyMine from '../pages/mine'
 import HyFriends from '../pages/friends'
 
-import { Redirect } from 'react-router-dom'
-
 const routes = [
   {
     path: '/',
     exact: true,
-    render: () => <Redirect to="/discover" />,
+    element: () => <Navigate to="/discover" />,
   },
   {
     path: '/discover',
-    component: HyDiscover,
-    routes: [
+    element: <HyDiscover />,
+    children: [
       {
         path: '/discover',
         exact: true,
-        render: () => <Redirect to="/discover/recommend" />,
+        element: () => <Navigate to="/discover/recommend" />,
       },
       {
         path: '/discover/recommend',
-        component: HyRecommend,
+        element: <HyRecommend />,
       },
       {
         path: '/discover/songs',
-        component: HySongs,
+        element: <HySongs />,
       },
       {
         path: '/discover/djradio',
-        component: HyDjRadio,
+        element: <HyDjRadio />,
       },
       {
         path: '/discover/artists',
-        component: HyArtists,
+        element: <HyArtists />,
       },
       {
         path: '/discover/album',
-        component: HyAlbum,
+        element: <HyAlbum />,
       },
       {
         path: '/discover/ranking',
-        component: HyRanking,
+        element: <HyRanking />,
       },
     ],
   },
   {
     path: '/mine',
     exact: true,
-    component: HyMine,
+    element: <HyMine />,
   },
   {
     path: '/friends',
     exact: true,
-    component: HyFriends,
+    element: <HyFriends />,
   },
 ]
 

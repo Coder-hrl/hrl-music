@@ -50,14 +50,34 @@ export const getNewAlbumAction = (limit) => {
 
 export const changeTopList = (res) => ({
   type: types.CHANGE_TOP_LIST,
-  topList: res.playlist,
+  topRanking: res.playlist,
+})
+export const changeUpList = (res) => ({
+  type: types.CHANGE_UP_LIST,
+  upRanking: res.playlist,
+})
+export const changeOrignList = (res) => ({
+  type: types.CHANGE_ORIGN_LIST,
+  originRanking: res.playlist,
 })
 
 export const getTopListAction = (idx) => {
   return (dispatch) => {
     getTopList(idx).then((res) => {
       // console.log(res)
-      dispatch(changeTopList(res))
+      switch (idx) {
+        case 0:
+          dispatch(changeTopList(res))
+          break
+        case 2:
+          dispatch(changeUpList(res))
+          break
+        case 3:
+          dispatch(changeOrignList(res))
+          break
+        default:
+          dispatch(changeTopList(res))
+      }
     })
   }
 }

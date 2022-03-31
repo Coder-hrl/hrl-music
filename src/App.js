@@ -1,7 +1,6 @@
 // 上面是顶层导入
 import React, { memo } from 'react'
-import { renderRoutes } from 'react-router-config'
-import { BrowserRouter } from 'react-router-dom'
+import { useRoutes } from 'react-router-dom'
 import { Provider } from 'react-redux'
 // 网络请求或者utils工具类文件
 import store from './store'
@@ -11,13 +10,12 @@ import HyAppFooter from './components/app-footer'
 import HyAppHeader from './components/app-header'
 
 const App = memo(function (props) {
+  const element = useRoutes(routes)
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <HyAppHeader />
-        {renderRoutes(routes)}
-        <HyAppFooter />
-      </BrowserRouter>
+      <HyAppHeader />
+      {element}
+      <HyAppFooter />
     </Provider>
   )
 })

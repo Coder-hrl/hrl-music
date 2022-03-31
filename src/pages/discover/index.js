@@ -1,15 +1,15 @@
 import React, { memo } from 'react'
-import { NavLink } from 'react-router-dom'
-import { renderRoutes } from 'react-router-config'
+import { NavLink, Outlet } from 'react-router-dom'
 import { DiscoverWrapper, TopMenu } from './style.js'
 
 import request from '@/service'
 import { dicoverMenu } from '@/common/local-data'
 import { useEffect } from 'react'
 
-const Discover = memo((props) => {
-  const { routes } = props.route
+const Discover = memo(() => {
+  // const { routes } = props.route
   // useEffect 相当于componentDidMount
+  // const element = useRoutes(routes)
   useEffect(() => {
     request({ url: '/banner' }).then((res) => console.log(res))
   }, [])
@@ -28,7 +28,7 @@ const Discover = memo((props) => {
           })}
         </TopMenu>
       </div>
-      {renderRoutes(routes)}
+      <Outlet />
     </DiscoverWrapper>
   )
 })
