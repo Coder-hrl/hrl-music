@@ -1,5 +1,5 @@
 // 上面是顶层导入
-import React, { memo } from 'react'
+import React, { memo, Suspense } from 'react'
 import { useRoutes } from 'react-router-dom'
 import { Provider } from 'react-redux'
 // 网络请求或者utils工具类文件
@@ -14,7 +14,7 @@ const App = memo(function (props) {
   return (
     <Provider store={store}>
       <HyAppHeader />
-      {element}
+      <Suspense fallback={<>...</>}>{element}</Suspense>
       <HyAppFooter />
     </Provider>
   )

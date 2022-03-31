@@ -1,16 +1,24 @@
+import { lazy } from 'react'
 import { Navigate } from 'react-router-dom'
-
-import HyDiscover from '../pages/discover'
-import HyRecommend from '../pages/discover/children-pages/recommend'
-import HySongs from '../pages/discover/children-pages/songs'
-import HyDjRadio from '../pages/discover/children-pages/djradio'
-import HyArtists from '../pages/discover/children-pages/artists'
-import HyAlbum from '../pages/discover/children-pages/album'
-import HyRanking from '../pages/discover/children-pages/ranking'
 // Discover下面的子页面
 // 我的页面
-import HyMine from '../pages/mine'
-import HyFriends from '../pages/friends'
+const HyMine = lazy((_) => import('../pages/mine'))
+const HyFriends = lazy((_) => import('../pages/friends'))
+const HySongs = lazy((_) => import('../pages/discover/children-pages/songs'))
+const HyRecommend = lazy((_) =>
+  import('../pages/discover/children-pages/recommend')
+)
+const HyDjRadio = lazy((_) =>
+  import('../pages/discover/children-pages/djradio')
+)
+const HyArtists = lazy((_) =>
+  import('../pages/discover/children-pages/artists')
+)
+const HyAlbum = lazy((_) => import('../pages/discover/children-pages/album'))
+const HyRanking = lazy((_) =>
+  import('../pages/discover/children-pages/ranking')
+)
+const HyDiscover = lazy((_) => import('../pages/discover'))
 
 const routes = [
   {
